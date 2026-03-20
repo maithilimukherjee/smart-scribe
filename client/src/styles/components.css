@@ -77,3 +77,104 @@
   font-size: 0.8rem;
   letter-spacing: 1px;
 }
+
+.output-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* main card */
+.output-card {
+  width: 720px;
+  padding: 35px;
+  border-radius: 14px;
+
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.25s ease;
+}
+
+/* subtle neon glow border effect */
+.output-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1px;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 255, 159, 0.4),
+    transparent
+  );
+
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+/* hover = alive */
+.output-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 2px rgba(0, 255, 159, 0.15);
+}
+
+/* headings */
+.output-card h1 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: var(--accent-green);
+  letter-spacing: 0.5px;
+}
+
+.output-card p {
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+/* notes block */
+.output-card pre {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.output-loading {
+  width: 720px;
+  height: 150px;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary),
+    rgba(0, 255, 159, 0.08),
+    var(--bg-secondary)
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.output-text
+{
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  text-align: justify;
+}

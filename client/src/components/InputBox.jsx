@@ -3,10 +3,14 @@ import "../styles/components.css";
 import axios from "axios";
 import Button from "./Button";
 import { useState } from "react";
+import Output from "./Output";
 
 function InputBox() {
   const [ytLink, setYtLink] = useState("");
   const [pdf, setPdf] = useState(null);
+  const [aiOutput, setAiOutput] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   const handleYtLinkChange = (e) => {
     setYtLink(e.target.value);
@@ -59,8 +63,11 @@ function InputBox() {
     }
   };
 
-  const generateNotes = async (text) => {
+const generateNotes = async (text) => {
   try {
+    setLoading(true);
+    setAiOutput(null);
+
     const prompt = `
     You are an expert note-maker.
 
@@ -74,12 +81,16 @@ function InputBox() {
 
     const response = await window.puter.ai.chat(prompt);
 
-    console.log("AI Output:", response.message.content);
-
+    console.log("Puter response:", response.message.content);
+    setAiOutput(response.message.content);
   } catch (err) {
     console.error("Puter error:", err);
+  } finally {
+    setLoading(false);
   }
 };
+
+
 
   return (
     <div className="input-box">
@@ -100,10 +111,14 @@ function InputBox() {
         className="file-input"
       />
 
+      <p className="divider">word limit: 5000 words</p>
       <div className="btn-group">
         <Button text="generate notes" onClick={handleSubmit} />
         <Button text="generate MCQs" onClick={handleSubmit} type="secondary" />
       </div>
+
+      <Output aiOutput={aiOutput} loading={loading} />
+
     </div>
   );
 }

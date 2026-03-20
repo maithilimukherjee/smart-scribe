@@ -11,7 +11,7 @@ const Output = ({ aiOutput, loading }) => {
     <div className="output-container">
       {/* summary card */}
       <div className="output-card">
-        <h1>AI Summary</h1>
+        <h1>AI Summary and Notes</h1>
         <pre className='output-text'>{summaryRaw?.replace(/^1\) Short summary:/, '').trim()}</pre>
       </div>
 

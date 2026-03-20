@@ -88,8 +88,8 @@
 
 /* main card */
 .output-card {
-  width: 720px;
-  padding: 35px;
+  width: 100%;
+  padding: 25px;
   border-radius: 14px;
 
   background: var(--bg-secondary);

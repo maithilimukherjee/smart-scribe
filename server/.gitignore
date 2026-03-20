@@ -1,0 +1,24 @@
+# node modules (obviously)
+node_modules/
+
+# env variables (VERY IMPORTANT)
+.env
+
+# uploaded files (multer)
+uploads/
+
+# logs
+logs/
+*.log
+npm-debug.log*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# editor junk
+.vscode/
+.idea/
+
+# build output (if any later)
+dist/

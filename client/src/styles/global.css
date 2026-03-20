@@ -1,0 +1,19 @@
+:root {
+  --bg-primary: #050816;        /* deep black-blue */
+  --bg-secondary: #0b1120;      /* slightly lighter */
+
+  --accent-blue: #3b82f6;       /* clean blue */
+  --accent-green: #00ff9f;      /* neon green (main character) */
+
+  --text-primary: #e6edf3;
+  --text-secondary: #94a3b8;
+
+  --border-subtle: #1f2937;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, sans-serif;
+}
+

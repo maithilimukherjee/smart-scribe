@@ -1,5 +1,6 @@
 import "../styles/inputBox.css";
 import "../styles/components.css";
+import axios from "axios";
 import Button from "./Button";
 import { useState } from "react";
 
@@ -47,13 +48,38 @@ function InputBox() {
         }
       );
 
-      console.log("Response from server:", res.data);
+      const extractedText = res.data.data.slice(0, 5000);
+
+      console.log("extracted text: ", extractedText);
+      generateNotes(extractedText);
 
 
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
+
+  const generateNotes = async (text) => {
+  try {
+    const prompt = `
+    You are an expert note-maker.
+
+    Convert the following text into:
+    1. A short summary
+    2. Structured notes with headings and bullet points
+
+    Text:
+    ${text}
+    `;
+
+    const response = await window.puter.ai.chat(prompt);
+
+    console.log("AI Output:", response.message.content);
+
+  } catch (err) {
+    console.error("Puter error:", err);
+  }
+};
 
   return (
     <div className="input-box">

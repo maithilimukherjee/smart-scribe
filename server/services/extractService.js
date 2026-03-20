@@ -3,18 +3,15 @@ const pdfParse = require("pdf-parse");
 
 const extractTextFromPDF = async (ytLink, file) => {
   try {
-    
     if (file) {
       const dataBuffer = fs.readFileSync(file.path);
       const pdfData = await pdfParse(dataBuffer);
 
-      
       fs.unlinkSync(file.path);
 
       return pdfData.text;
     }
 
-    
     if (ytLink) {
       return "YouTube link processing is not implemented yet.";
     }

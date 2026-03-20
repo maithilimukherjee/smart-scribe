@@ -15,7 +15,7 @@ function InputBox() {
     setPdf(e.target.files[0]);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
 
     if(!ytLink && !pdf) {
       alert("Please provide either a YouTube link or a PDF file.");
@@ -27,8 +27,32 @@ function InputBox() {
         return;
         }
 
-    console.log("YouTube Link:", ytLink);
-    console.log("PDF File:", pdf);
+    try{
+      const formData = new FormData();
+
+      if (ytLink) {
+        formData.append("ytLink", ytLink);
+      }
+      
+      if (pdf) {
+        formData.append("file", pdf);
+      }
+
+      const res = await axios.post(
+        "http://localhost:5000/api/process",
+        formData,
+        {
+          headers: {"Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log("Response from server:", res.data);
+
+
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (

@@ -11,14 +11,14 @@ const Output = ({ aiOutput, loading }) => {
     <div className="output-container">
       {/* summary card */}
       <div className="output-card">
-        <h1>AI Summary and Notes</h1>
+        <h1>Summary</h1>
         <pre className='output-text'>{summaryRaw?.replace(/^1\) Short summary:/, '').trim()}</pre>
       </div>
 
       {/* notes card */}
       {notesRaw && (
         <div className="output-card">
-          <h1>AI Notes</h1>
+          <h1>Notes</h1>
           <pre className='output-text'>{notesRaw.trim()}</pre>
         </div>
       )}

@@ -6,14 +6,14 @@ import { useState } from "react";
 import Output from "./Output";
 
 function InputBox() {
-  const [ytLink, setYtLink] = useState("");
+  const [webLink, setWebLink] = useState("");
   const [pdf, setPdf] = useState(null);
   const [aiOutput, setAiOutput] = useState(null);
   const [loading, setLoading] = useState(false);
 
 
-  const handleYtLinkChange = (e) => {
-    setYtLink(e.target.value);
+  const handleWebLinkChange = (e) => {
+    setWebLink(e.target.value);
   };
 
   const handlePDFChange = (e) => {
@@ -22,21 +22,21 @@ function InputBox() {
 
   const handleSubmit = async () => {
 
-    if(!ytLink && !pdf) {
-      alert("Please provide either a YouTube link or a PDF file.");
+    if(!webLink && !pdf) {
+      alert("Please provide either a web link or a PDF file.");
       return;
     }
 
-    if(ytLink && pdf) {
-        alert("Please provide only one input: either a YouTube link or a PDF file.");
+    if(webLink && pdf) {
+        alert("Please provide only one input: either a web link or a PDF file.");
         return;
         }
 
     try{
       const formData = new FormData();
 
-      if (ytLink) {
-        formData.append("ytLink", ytLink);
+      if (webLink) {
+        formData.append("webLink", webLink);
       }
       
       if (pdf) {
@@ -52,10 +52,32 @@ function InputBox() {
         }
       );
 
-      const extractedText = res.data.data.slice(0, 5000);
+      const extractedText = res.data.data;
 
-      console.log("extracted text: ", extractedText);
-      generateNotes(extractedText);
+      if (!extractedText || extractedText.trim() === "") {
+      alert("something went wrong while processing input");
+      setLoading(false);
+      return;
+    }
+
+       if (extractedText === "WEB_ERROR") {
+      alert("could not fetch website content");
+      return;
+}
+
+      if (extractedText === "WEB_EMPTY") {
+        alert("website has no extractable content");
+        return;
+      }
+
+       if (extractedText === "NO_INPUT") {
+        alert("no input provided");
+        return;
+      }
+
+      const trimmedText = extractedText.slice(0, 5000);
+      console.log("Extracted text:", trimmedText);
+      generateNotes(trimmedText);
 
 
     } catch (error) {
@@ -94,12 +116,13 @@ const generateNotes = async (text) => {
 
   return (
     <div className="input-box">
+      <p className="divider">word limit: 5000 words</p>
       <input
         type="text"
-        placeholder="enter youtube link"
+        placeholder="enter website link"
         className="input"
-        value={ytLink}
-        onChange={handleYtLinkChange}
+        value={webLink}
+        onChange={handleWebLinkChange}
       />
 
      <p className="divider">OR</p>
@@ -111,10 +134,11 @@ const generateNotes = async (text) => {
         className="file-input"
       />
 
-      <p className="divider">word limit: 5000 words</p>
+      
       <div className="btn-group">
-        <Button text="generate notes" onClick={handleSubmit} />
-        <Button text="generate MCQs" onClick={handleSubmit} type="secondary" />
+        <Button text={loading ? "generating..." : "generate notes"} onClick={handleSubmit} 
+/>
+        <Button text={loading ? "generating..." : "generate MCQs"} onClick={handleSubmit} type="secondary" />
       </div>
 
       <Output aiOutput={aiOutput} loading={loading} />

@@ -2,10 +2,10 @@ const { extractTextFromPDF } = require("../services/extractService");
 
 const processInput = async (req, res) => {
   try {
-    const { ytLink } = req.body;
+    const { webLink } = req.body;
     const file = req.file;
 
-    const text = await extractTextFromPDF(ytLink, file);
+    const text = await extractTextFromPDF(webLink, file);
 
     res.json({
       success: true,

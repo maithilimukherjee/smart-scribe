@@ -1,6 +1,7 @@
 ## Frontend Overview
 
 The frontend of SmartScribe is built with a focus on simplicity, responsiveness, and a clean user experience. It provides an intuitive interface for input handling and structured AI output display.
+
 ---
 
 ## Tech Stack

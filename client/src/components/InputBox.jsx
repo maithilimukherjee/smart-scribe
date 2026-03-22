@@ -1,4 +1,4 @@
-import "../styles/inputBox.css";
+
 import "../styles/components.css";
 import axios from "axios";
 import Button from "./Button";

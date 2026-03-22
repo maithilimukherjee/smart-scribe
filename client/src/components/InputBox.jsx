@@ -43,7 +43,7 @@ function InputBox() {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/process",
+        "https://smart-scribe-wjfa.onrender.com/api/process",
         formData,
         {
           headers: {"Content-Type": "multipart/form-data",

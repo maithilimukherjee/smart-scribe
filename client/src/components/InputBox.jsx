@@ -156,9 +156,9 @@ const generateAI = async (text, type) => {
 
       
       <div className="btn-group">
-        <Button text={loading ? "generating..." : "generate notes"} onClick={() => handleSubmit("notes")} 
+        <Button text="generate notes" onClick={() => handleSubmit("notes")} 
 />
-        <Button text={loading ? "generating..." : "generate MCQs"} onClick={() => handleSubmit("mcqs")} type="secondary" />
+        <Button text="generate MCQs" onClick={() => handleSubmit("mcqs")} type="secondary" />
       </div>
 
       <Output aiOutput={aiOutput} loading={loading} />

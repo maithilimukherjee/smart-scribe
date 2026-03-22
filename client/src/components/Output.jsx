@@ -1,7 +1,7 @@
 import "../styles/components.css";
 
 const Output = ({ aiOutput, loading }) => {
-  if (loading) return <div className="subtitle">generating magic...</div>;
+  if (loading) return <div className="output-loading"><p className="subtitle">generating...</p></div>;
   if (!aiOutput) return null;
 
   let summary = "";
@@ -45,7 +45,7 @@ const Output = ({ aiOutput, loading }) => {
       {/* mcqs */}
       {mcqs && (
         <div className="output-card">
-          <h1>mcqs</h1>
+          <h1>MCQs</h1>
           <pre className="output-text">{mcqs}</pre>
         </div>
       )}

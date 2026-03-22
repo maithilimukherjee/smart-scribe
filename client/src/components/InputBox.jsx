@@ -139,7 +139,7 @@ const generateAI = async (text, type) => {
       <p className="divider">word limit: 5000 words</p>
       <input
         type="text"
-        placeholder="enter website link"
+        placeholder="enter website link (articles/blogs only)"
         className="input"
         value={webLink}
         onChange={handleWebLinkChange}

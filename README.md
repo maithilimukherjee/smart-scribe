@@ -1,10 +1,10 @@
-### SmartScribe
+# SmartScribe
 
 SmartScribe is a full-stack AI-powered application that converts raw content from PDFs and web pages into concise summaries, structured notes, and multiple-choice questions for efficient learning and revision.
 
 ---
 
-### Features
+# Features
 
 - Multi-source input
 - Upload PDF documents
@@ -23,7 +23,7 @@ SmartScribe is a full-stack AI-powered application that converts raw content fro
 
 ---
 
-### Tech Stack
+# Tech Stack
 
 - Frontend
 - React.js
@@ -40,35 +40,36 @@ SmartScribe is a full-stack AI-powered application that converts raw content fro
 
 ---
 
-### Deployment
+# Deployment
 
--Frontend: Vercel
+- Frontend: Vercel
 - Backend: Render
 
 ---
 
-### How It Works
+# How It Works
 
--User provides either a PDF file (or PPT in .pdf format) or website link (blogs/articles)
+- User provides either a PDF file (or PPT in .pdf format) or website link (blogs/articles)
 
-# Backend processing:
+### Backend processing:
 
 - Extracts text from PDF or scrapes content from the website
 - Cleans and trims the text
 
-# AI processing:
+### AI processing:
 
 - Sends extracted text to AI
 - Generates: Summary, Structured notes, MCQs
 
 ---
 
-### Installation and Setup
+# Installation and Setup
 
 1. Clone the repository
 
 `git clone https://github.com/your-username/smartscribe.git`
 `cd smartscribe`
+
 
 2. Backend setup
 
@@ -84,6 +85,6 @@ SmartScribe is a full-stack AI-powered application that converts raw content fro
 
 ---
 
-### License
+# License
 
 This project is licensed under the MIT License.

@@ -20,8 +20,7 @@ function InputBox() {
     setPdf(e.target.files[0]);
   };
 
-  const handleSubmit = async () => {
-
+  const handleSubmit = async (type) => {
     if(!webLink && !pdf) {
       alert("Please provide either a web link or a PDF file.");
       return;
@@ -77,7 +76,7 @@ function InputBox() {
 
       const trimmedText = extractedText.slice(0, 5000);
       console.log("Extracted text:", trimmedText);
-      generateNotes(trimmedText);
+      generateAI(trimmedText, type);
 
 
     } catch (error) {
@@ -85,12 +84,16 @@ function InputBox() {
     }
   };
 
-const generateNotes = async (text) => {
+const generateAI = async (text, type) => {
   try {
     setLoading(true);
     setAiOutput(null);
 
-    const prompt = `
+    let prompt = "";
+
+    if (type === "notes") {
+
+    prompt = `
     You are an expert note-maker.
 
     Convert the following text into:
@@ -100,12 +103,29 @@ const generateNotes = async (text) => {
     Text:
     ${text}
     `;
+    }
+
+    if (type === "mcqs") {
+
+      prompt = `
+      You are an expert question maker.
+
+      Convert the following text into 10 multiple-choice questions with 4 options each, and indicate the correct answer.
+      Each question should begin with the word Question and then question number.
+      Answer: (a/b/c/d)
+
+      Text:
+      ${text}
+      `;
+    }
 
     const response = await window.puter.ai.chat(prompt);
 
     console.log("Puter response:", response.message.content);
     setAiOutput(response.message.content);
-  } catch (err) {
+  } 
+
+  catch (err) {
     console.error("Puter error:", err);
   } finally {
     setLoading(false);
@@ -136,9 +156,9 @@ const generateNotes = async (text) => {
 
       
       <div className="btn-group">
-        <Button text={loading ? "generating..." : "generate notes"} onClick={handleSubmit} 
+        <Button text={loading ? "generating..." : "generate notes"} onClick={() => handleSubmit("notes")} 
 />
-        <Button text={loading ? "generating..." : "generate MCQs"} onClick={handleSubmit} type="secondary" />
+        <Button text={loading ? "generating..." : "generate MCQs"} onClick={() => handleSubmit("mcqs")} type="secondary" />
       </div>
 
       <Output aiOutput={aiOutput} loading={loading} />

@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors(
   {
-    origin: "https://smart-scribe-iota.vercel.app/",
+    origin: "https://smart-scribe-iota.vercel.app",
   }
 ));
 app.use(express.json());

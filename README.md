@@ -1,6 +1,6 @@
-# SmartScribe
+# smart-scribe
 
-SmartScribe is a full-stack AI-powered application that converts raw content from PDFs and web pages into concise summaries, structured notes, and multiple-choice questions for efficient learning and revision.
+smart-scribe is a full-stack AI-powered application that converts raw content from PDFs and web pages into concise summaries, structured notes, and multiple-choice questions for efficient learning and revision.
 
 ---
 
@@ -37,6 +37,36 @@ SmartScribe is a full-stack AI-powered application that converts raw content fro
 - Cheerio + Axios (web scraping)
 - AI Integration
 - Puter AI (for generating summaries, notes, and MCQs)
+
+---
+
+# Frontend Overview
+
+The frontend of SmartScribe is built with a focus on simplicity, responsiveness, and a clean user experience. It provides an intuitive interface for input handling and structured AI output display.
+
+
+### Tech Stack
+- React.js
+- Vanilla CSS
+- Axios (API communication)
+
+### Features
+
+Input handling for:
+- Web links
+- PDF file uploads
+
+### Dynamic UI states:
+- Loading indicators during AI processing
+- Conditional rendering of output
+- Structured output display:
+- Summary section
+- Notes section
+- MCQs section
+- Responsive and minimal design for distraction-free usage
+
+### UI Assets
+SVG Icons: https://www.svgrepo.com/svg/513472/ribbon
 
 ---
 

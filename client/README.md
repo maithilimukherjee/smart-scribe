@@ -1,16 +1,28 @@
-# React + Vite
+## Frontend Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend of SmartScribe is built with a focus on simplicity, responsiveness, and a clean user experience. It provides an intuitive interface for input handling and structured AI output display.
+---
 
-Currently, two official plugins are available:
+## Tech Stack
+- React.js
+- Vanilla CSS
+- Axios (API communication)
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+Input handling for:
+- Web links
+- PDF file uploads
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Dynamic UI states:
+- Loading indicators during AI processing
+- Conditional rendering of output
+- Structured output display:
+- Summary section
+- Notes section
+- MCQs section
+- Responsive and minimal design for distraction-free usage
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# UI Assets
+SVG Icons: https://www.svgrepo.com/svg/513472/ribbon
